@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <style>
+        input[type="number"] {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+        .fixed {
+            background-color: lightblue;
+
+        }
+        .small-grid {
+
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<h1>Sudoku</h1>
+<table id="sudoku-table">
+</table>
+
+<button onclick="checkWin()">Kiểm tra</button>
+<p id="result"></p>
+<img id="image" src="cirno.jpg" alt="Image description" width="100px" left="300px">
+<script src="Sudoku_6x6.js"></script>
+</body>
+</html>
