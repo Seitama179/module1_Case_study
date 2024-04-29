@@ -89,16 +89,7 @@ function drawBoard() {
 function checkWin() {
     let table = document.getElementById("sudoku-table");
     let isValid = true;
-    //kiểm tra giá trị trong khoảng 1-6
-    for (let i = 0; i < 6; i++) {
-        for (let j = 0; j < 6; j++) {
-            if(table.rows[i].cells[j].firstChild.value < 1 || table.rows[i].cells[j].firstChild.value > 6) {
-                isValid = false;
-                break;
-            }
-        }
 
-    }
     // Kiểm tra hàng và cột
     for (let i = 0; i < 6; i++) {
         let rowValues = new Set();
@@ -106,7 +97,7 @@ function checkWin() {
         for (let j = 0; j < 6; j++) {
             // Kiểm tra hàng
             let rowValue = parseInt(table.rows[i].cells[j].firstChild.value);
-            if (rowValues.has(rowValue) || rowValue === 0) {
+            if (rowValues.has(rowValue) || rowValue === 0 || rowValue<1 || rowValue>6) {
                 isValid = false;
                 break;
             }
