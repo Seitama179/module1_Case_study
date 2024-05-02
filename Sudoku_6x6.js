@@ -1,3 +1,5 @@
+let checkButton = document.getElementById("check-button");
+//let sudokuInputs = document.querySelectorAll("#sudoku-table input[type='number']");
 function drawBoard() {
     let table = document.getElementById("sudoku-table");
     for (let i = 0; i < 6; i++) {
@@ -8,6 +10,7 @@ function drawBoard() {
             input.type = "number";
             input.min = 1;
             input.max = 6;
+            input.addEventListener("input", enableCheckButton); // Thêm sự kiện input
             //chia các vùng nhỏ 2x3
             if ((i === 0 || i === 1 || i === 4 || i=== 5) && (j === 0 || j === 1 || j === 2)) {
                 cell.classList.add("small-grid");
@@ -97,7 +100,7 @@ function checkWin() {
         for (let j = 0; j < 6; j++) {
             // Kiểm tra hàng
             let rowValue = parseInt(table.rows[i].cells[j].firstChild.value);
-            if (rowValues.has(rowValue) || rowValue === 0 || rowValue<1 || rowValue>6) {
+            if (rowValues.has(rowValue) || rowValue<1 || rowValue>6 || isNaN(rowValue)) {
                 isValid = false;
                 break;
             }
@@ -105,7 +108,7 @@ function checkWin() {
             if (!isValid) break;
             // Kiểm tra cột
             let colValue = parseInt(table.rows[j].cells[i].firstChild.value);
-            if (colValues.has(colValue) || colValue === 0) {
+            if (colValues.has(colValue) /*|| colValue === 0*/) {
                 isValid = false;
                 break;
             }
@@ -120,7 +123,7 @@ function checkWin() {
             for (let m = k; m < k + 2; m++) {
                 for (let n = l; n < l + 3; n++) {
                     let value = parseInt(table.rows[m].cells[n].firstChild.value);
-                    if (numbers.has(value) || value === 0) {
+                    if (numbers.has(value) /*|| value === 0*/) {
                         isValid = false;
                         break;
                     }
@@ -129,8 +132,31 @@ function checkWin() {
             }
         }
     }
-    let resultMessage = document.getElementById("result");
-    resultMessage.textContent = isValid ? "Hợp lệ" : "Không hợp lệ";
+    // let resultMessage = document.getElementById("result");
+    // resultMessage.textContent = isValid ? "Hợp lệ" : "Không hợp lệ";
+    if(isValid) {
+        alert("Bạn đã thắng trò chơi!");
+        disableInputs();
+        disableCheckButton();
+    } else {
+        alert("Chưa chính xác, hãy kiểm tra kỹ lại");
+        disableCheckButton();
+    }
+}
+//ngưng nhập số khi đã đúng
+function disableInputs() {
+    let inputs = document.querySelectorAll("input[type='number']");
+    inputs.forEach(function(input) {
+        input.disabled = true;
+    });
+}
+// Vô hiệu hóa nút kiểm tra
+function disableCheckButton() {
+    checkButton.disabled = true;
+}
+// Cho phép nút kiểm tra
+function enableCheckButton() {
+    checkButton.disabled = false;
 }
 // khoi chay
 window.onload = function() {
