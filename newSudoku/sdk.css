@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+
+}
+/* Đường kẻ rộng mỗi 3 cột */
+td:nth-child(3n) {
+    border-right: 2px solid black;
+}
+
+/* Đường kẻ rộng mỗi 3 hàng */
+tr:nth-child(3n) td {
+    border-bottom: 2px solid black;
+}
+input[type="number"] {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+.fixed {
+    background-color: #00FFFF;
+    font-weight: bold;
+    color: black;
+}
+h1 {
+    text-align: center;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#check-button {
+    margin-top: 20px;
+}

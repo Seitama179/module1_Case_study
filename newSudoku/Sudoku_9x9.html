@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="sdk.css">
+</head>
+<body>
+<h1>Sudoku</h1>
+<p>Luật chơi sudoku:
+<ul>
+    <li>Mỗi khối 3×3, hàng dọc hoặc ngang chỉ có thể chứa các số từ 1 đến 9.</li>
+    <li>Mỗi số trong khối 3×3, hàng dọc hoặc hàng ngang không được trùng nhau.</li>
+</ul>
+</p>
+<button id="start" onclick="startPlay()">Bắt đầu</button><br>
+<table id="sudoku-table"></table>
+<button id="check-button" onclick="checkWin()" >Kiểm tra</button>
+<img id="image" src="cirno.jpg" alt="Image" style=" width:90px; margin-left:50px" >
+<script src="Sudoku_9x9.js"></script>
+</body>
+</html>
